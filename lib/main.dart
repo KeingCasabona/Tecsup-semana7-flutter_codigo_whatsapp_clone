@@ -11,6 +11,23 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Whatsapp clone',
+      theme: ThemeData(
+        primaryColor: Colors.white, //COLOR DE LETRA
+        secondaryHeaderColor: Colors.white, //COLOR DE ...
+        appBarTheme: AppBarTheme(
+          backgroundColor: Color(0xff065e52),
+          foregroundColor: Colors.white,
+        ),
+        scaffoldBackgroundColor: Colors.white,
+        floatingActionButtonTheme: FloatingActionButtonThemeData(
+          backgroundColor: Color(0xff01c851),
+        ),
+        textTheme: TextTheme(
+          bodyMedium: TextStyle(
+            color: Colors.red,
+          ),
+        ),
+      ),
       home: HomePage(),
     );
   }

@@ -12,15 +12,21 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Whatsapp'),
+        title: Text(
+          'Whatsapp',
+        ),
         actions: [
           IconButton(
             onPressed: () {},
-            icon: Icon(Icons.search_rounded),
+            icon: Icon(
+              Icons.search_rounded,
+            ),
           ),
           IconButton(
             onPressed: () {},
-            icon: Icon(Icons.more_vert),
+            icon: Icon(
+              Icons.more_vert,
+            ),
           ),
         ],
       ),
@@ -28,10 +34,14 @@ class _HomePageState extends State<HomePage> {
         onPressed: () {},
         child: Icon(
           Icons.message,
-          color: Colors.white,
+          color: Theme.of(context).primaryColor,
         ),
-        backgroundColor: Colors.green,
         shape: CircleBorder(),
+      ),
+      body: Column(
+        children: [
+          Text('HOLAAAAA', style: Theme.of(context).textTheme.bodyMedium),
+        ],
       ),
     );
   }
