@@ -22,7 +22,33 @@ class _HomePageState extends State<HomePage>
       appBar: AppBar(
         bottom: TabBar(
           controller: _tabController,
-          tabs: [],
+          indicatorColor: Colors.white,
+          indicatorWeight: 3.5,
+          labelColor: Theme.of(context).primaryColor,
+          unselectedLabelColor: Colors.white54,
+          tabs: [
+            Tab(
+              child: Icon(Icons.camera_alt),
+            ),
+            Tab(
+              child: Text(
+                'CHATS',
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+            ),
+            Tab(
+              child: Text(
+                'STATUS',
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+            ),
+            Tab(
+              child: Text(
+                'CALLS',
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+            ),
+          ],
         ),
         title: Text(
           'Whatsapp',
@@ -50,9 +76,13 @@ class _HomePageState extends State<HomePage>
         ),
         shape: CircleBorder(),
       ),
-      body: Column(
+      body: TabBarView(
+        controller: _tabController,
         children: [
-          Text('HOLAAAAA', style: Theme.of(context).textTheme.bodyMedium),
+          Center(child: Text('CAMARA')),
+          Center(child: Text('CHATS')),
+          Center(child: Text('STATUS')),
+          Center(child: Text('CALLS')),
         ],
       ),
     );
