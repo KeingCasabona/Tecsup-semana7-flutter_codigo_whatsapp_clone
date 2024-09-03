@@ -25,7 +25,7 @@ List<ChatModel> chats = [
     userName: 'Renato Mancilla',
     message: 'Prefiero hablarlo en persona',
     time: '8:40',
-    countMessage: 7,
+    countMessage: 0,
     isTyping: false,
   ),
   ChatModel(

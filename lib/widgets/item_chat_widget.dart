@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_codigo_whatsapp_clone/models/chat_model.dart';
 
 class ItemChatWidget extends StatelessWidget {
-  const ItemChatWidget({
-    super.key,
-  });
+  final ChatModel chatModel;
+
+  ItemChatWidget({required this.chatModel});
 
   @override
   Widget build(BuildContext context) {
@@ -13,19 +14,25 @@ class ItemChatWidget extends StatelessWidget {
         leading: CircleAvatar(
           backgroundColor: Colors.black12,
           radius: 26,
-          backgroundImage: NetworkImage(
-              'https://images.pexels.com/photos/8686319/pexels-photo-8686319.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'),
+          backgroundImage: NetworkImage(chatModel.avatarUrl),
         ),
         title: Text(
-          'Cynthia Pamela Villegas',
+          chatModel.userName,
           style: TextStyle(
             fontWeight: FontWeight.w700,
             fontSize: 14,
           ),
         ),
         subtitle: Text(
-          'Hola amiga que cuentas quiero que este atenta a los mensajes',
-          style: TextStyle(fontSize: 12),
+          chatModel.isTyping == true ? 'Typing...' : chatModel.message,
+          style: TextStyle(
+            fontSize: 12,
+            color: chatModel.isTyping == true
+                ? Theme.of(context).secondaryHeaderColor
+                : chatModel.countMessage < 1
+                    ? Colors.black54
+                    : Colors.black,
+          ),
           maxLines: 1,
           overflow: TextOverflow.ellipsis,
         ),
@@ -33,27 +40,32 @@ class ItemChatWidget extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Text(
-              '10:20',
+              chatModel.time,
               style: TextStyle(
                 fontSize: 12,
-                color: Theme.of(context).secondaryHeaderColor,
+                color: chatModel.countMessage < 1
+                    ? Colors.black.withOpacity(0.5)
+                    : Theme.of(context).secondaryHeaderColor,
               ),
             ),
-            Container(
-              child: Text(
-                '1',
-                style: TextStyle(
-                  color: Theme.of(context).primaryColor,
+            if (chatModel.countMessage < 1)
+              SizedBox()
+            else
+              Container(
+                child: Text(
+                  chatModel.countMessage.toString(),
+                  style: TextStyle(
+                    color: Theme.of(context).primaryColor,
+                  ),
+                ),
+                height: 20,
+                width: 20,
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: Theme.of(context).secondaryHeaderColor,
                 ),
               ),
-              height: 20,
-              width: 20,
-              alignment: Alignment.center,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: Theme.of(context).secondaryHeaderColor,
-              ),
-            ),
           ],
         ),
       ),
