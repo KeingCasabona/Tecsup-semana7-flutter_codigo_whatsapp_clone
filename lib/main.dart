@@ -12,8 +12,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Whatsapp clone',
       theme: ThemeData(
-        primaryColor: Colors.white, //COLOR DE LETRA
-        secondaryHeaderColor: Colors.white, //COLOR DE ...
+        primaryColor: Colors.white,
+        secondaryHeaderColor: Color(0xff01c851),
         appBarTheme: AppBarTheme(
           backgroundColor: Color(0xff065e52),
           foregroundColor: Colors.white,
