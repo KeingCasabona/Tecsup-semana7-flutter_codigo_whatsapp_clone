@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_codigo_whatsapp_clone/models/chat_model.dart';
+import 'package:flutter_codigo_whatsapp_clone/pages/chat_detail_page.dart';
 
 class ItemChatWidget extends StatelessWidget {
   final ChatModel chatModel;
@@ -11,6 +12,12 @@ class ItemChatWidget extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(bottom: 8),
       child: ListTile(
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => ChatDetailPage()),
+          );
+        },
         leading: CircleAvatar(
           backgroundColor: Colors.black12,
           radius: 26,
