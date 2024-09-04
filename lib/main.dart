@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
         ),
         textTheme: TextTheme(
           bodyMedium: TextStyle(
-            color: Colors.red,
+            color: Colors.black,
           ),
         ),
       ),
