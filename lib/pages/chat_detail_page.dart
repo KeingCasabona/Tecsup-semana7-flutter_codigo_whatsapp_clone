@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_codigo_whatsapp_clone/data/data_dummy.dart';
 
 class ChatDetailPage extends StatelessWidget {
   const ChatDetailPage({super.key});
@@ -54,10 +55,13 @@ class ChatDetailPage extends StatelessWidget {
         body: Stack(
           children: [
             Container(color: Colors.black26.withOpacity(0.1)),
-            ListView(
-              children: [
-                Align(
-                  alignment: Alignment.topLeft,
+            ListView.builder(
+              itemCount: chatMessages.length,
+              itemBuilder: (BuildContext context, int index) {
+                return Align(
+                  alignment: chatMessages[index].messageType == 'other'
+                      ? Alignment.topLeft
+                      : Alignment.topRight,
                   child: Container(
                     margin: EdgeInsets.symmetric(
                       horizontal: 20,
@@ -67,14 +71,20 @@ class ChatDetailPage extends StatelessWidget {
                       horizontal: 8,
                       vertical: 4,
                     ),
-                    child: Text('Hola como estas'),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.only(
-                        topRight: Radius.circular(10),
+                        topLeft: chatMessages[index].messageType == 'other'
+                            ? Radius.circular(0)
+                            : Radius.circular(10),
+                        topRight: chatMessages[index].messageType == 'me'
+                            ? Radius.circular(0)
+                            : Radius.circular(10),
                         bottomLeft: Radius.circular(10),
                         bottomRight: Radius.circular(10),
                       ),
-                      color: Colors.white,
+                      color: chatMessages[index].messageType == 'other'
+                          ? Colors.white
+                          : Color(0xffe3ffc4),
                       boxShadow: [
                         BoxShadow(
                           color: Colors.black.withOpacity(0.04),
@@ -83,96 +93,12 @@ class ChatDetailPage extends StatelessWidget {
                         ),
                       ],
                     ),
-                  ),
-                ),
-                Align(
-                  alignment: Alignment.topRight,
-                  child: Container(
-                    margin: EdgeInsets.symmetric(
-                      horizontal: 20,
-                      vertical: 5,
-                    ),
-                    padding: EdgeInsets.symmetric(
-                      vertical: 4,
-                      horizontal: 8,
-                    ),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.only(
-                        bottomLeft: Radius.circular(10),
-                        bottomRight: Radius.circular(10),
-                        topLeft: Radius.circular(10),
-                      ),
-                      color: Color(0xffe3ffc4),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black.withOpacity(0.04),
-                          offset: Offset(4, 4),
-                          blurRadius: 12,
-                        ),
-                      ],
-                    ),
-                    child: Text('Hola, estoy muy bien, aprendiendo Flutter'),
-                  ),
-                ),
-                Align(
-                  alignment: Alignment.topLeft,
-                  child: Container(
-                    margin: EdgeInsets.symmetric(
-                      horizontal: 20,
-                      vertical: 5,
-                    ),
-                    padding: EdgeInsets.symmetric(
-                      horizontal: 8,
-                      vertical: 4,
-                    ),
-                    child: Text('Que bueno'),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.only(
-                        topRight: Radius.circular(10),
-                        bottomLeft: Radius.circular(10),
-                        bottomRight: Radius.circular(10),
-                      ),
-                      color: Colors.white,
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black.withOpacity(0.04),
-                          offset: Offset(4, 4),
-                          blurRadius: 12,
-                        ),
-                      ],
+                    child: Text(
+                      chatMessages[index].messageContent.toString(),
                     ),
                   ),
-                ),
-                Align(
-                  alignment: Alignment.topRight,
-                  child: Container(
-                    margin: EdgeInsets.symmetric(
-                      horizontal: 20,
-                      vertical: 5,
-                    ),
-                    padding: EdgeInsets.symmetric(
-                      vertical: 4,
-                      horizontal: 8,
-                    ),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.only(
-                        bottomLeft: Radius.circular(10),
-                        bottomRight: Radius.circular(10),
-                        topLeft: Radius.circular(10),
-                      ),
-                      color: Color(0xffe3ffc4),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black.withOpacity(0.04),
-                          offset: Offset(4, 4),
-                          blurRadius: 12,
-                        ),
-                      ],
-                    ),
-                    child: Text('si por hoy eso y mas tarde salgo'),
-                  ),
-                ),
-              ],
+                );
+              },
             ),
             Align(
               alignment: Alignment.bottomCenter,
