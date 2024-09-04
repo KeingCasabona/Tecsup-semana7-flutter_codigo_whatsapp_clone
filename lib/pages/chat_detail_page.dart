@@ -1,8 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_codigo_whatsapp_clone/data/data_dummy.dart';
+import 'package:flutter_codigo_whatsapp_clone/models/chat_message_model.dart';
 
-class ChatDetailPage extends StatelessWidget {
+class ChatDetailPage extends StatefulWidget {
   const ChatDetailPage({super.key});
+
+  @override
+  State<ChatDetailPage> createState() => _ChatDetailPageState();
+}
+
+class _ChatDetailPageState extends State<ChatDetailPage> {
+  TextEditingController _controller = TextEditingController();
+
+  void _sendMessage() {
+    if (_controller.text.isNotEmpty) {
+      setState(() {
+        chatMessages.add(ChatMessageModel(
+          messageContent: _controller.text,
+          messageType: 'me',
+        ));
+        _controller.clear();
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -109,6 +129,7 @@ class ChatDetailPage extends StatelessWidget {
                   children: [
                     Expanded(
                       child: TextField(
+                        controller: _controller,
                         decoration: InputDecoration(
                             hintText: 'Type message...',
                             hintStyle: TextStyle(
@@ -156,7 +177,7 @@ class ChatDetailPage extends StatelessWidget {
                     ),
                     GestureDetector(
                       onTap: () {
-                        print('Hola');
+                        _sendMessage();
                       },
                       child: Container(
                         margin: EdgeInsets.only(left: 10),
