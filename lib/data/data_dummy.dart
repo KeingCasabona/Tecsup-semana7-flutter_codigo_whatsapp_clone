@@ -1,3 +1,4 @@
+import 'package:flutter_codigo_whatsapp_clone/models/chat_message_model.dart';
 import 'package:flutter_codigo_whatsapp_clone/models/chat_model.dart';
 
 List<ChatModel> chats = [
@@ -46,4 +47,23 @@ List<ChatModel> chats = [
     countMessage: 10,
     isTyping: false,
   ),
+];
+
+List<ChatMessageModel> chatMessages = [
+  ChatMessageModel(
+    messageContent: 'Hola como estas',
+    messageType: 'other',
+  ),
+  ChatMessageModel(
+    messageContent: 'Hola, estoy bien, aprendiendo Flutter',
+    messageType: 'me',
+  ),
+  ChatMessageModel(
+    messageContent: 'Que bueno',
+    messageType: 'other',
+  ),
+  ChatMessageModel(
+    messageContent: 'Si por hoy y mas tarde salgo',
+    messageType: 'me',
+  )
 ];
