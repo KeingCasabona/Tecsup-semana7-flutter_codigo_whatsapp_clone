@@ -6,85 +6,166 @@ class ChatDetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leadingWidth: 30,
-        title: Row(
-          children: [
-            CircleAvatar(
-              backgroundImage: NetworkImage(
-                'https://images.pexels.com/photos/17767209/pexels-photo-17767209/free-photo-of-sentado-conexion-retrato-comunicacion.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+        appBar: AppBar(
+          leadingWidth: 30,
+          title: Row(
+            children: [
+              CircleAvatar(
+                backgroundImage: NetworkImage(
+                  'https://images.pexels.com/photos/17767209/pexels-photo-17767209/free-photo-of-sentado-conexion-retrato-comunicacion.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+                ),
               ),
-            ),
-            SizedBox(width: 12),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Ximena Lopez Valenzuela',
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
+              SizedBox(width: 12),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Ximena Lopez Valenzuela',
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
-                  ),
-                  Text(
-                    'Last seen today 11:39 AM',
-                    style: TextStyle(fontSize: 14),
-                  ),
-                ],
+                    Text(
+                      'Last seen today 11:39 AM',
+                      style: TextStyle(fontSize: 14),
+                    ),
+                  ],
+                ),
+              )
+            ],
+          ),
+          actions: [
+            IconButton(
+              onPressed: () {},
+              icon: Icon(Icons.videocam),
+            ),
+            IconButton(
+              onPressed: () {},
+              icon: Icon(Icons.call),
+            ),
+            IconButton(
+              onPressed: () {},
+              icon: Icon(Icons.more_vert),
+            ),
+          ],
+        ),
+        body: Stack(
+          children: [
+            Container(color: Colors.black26.withOpacity(0.1)),
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: Container(
+                margin:
+                    EdgeInsets.only(right: 20, left: 20, bottom: 40, top: 20),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: TextField(
+                        decoration: InputDecoration(
+                            hintText: 'Type message...',
+                            hintStyle: TextStyle(
+                              fontSize: 16,
+                              color: Colors.black54,
+                            ),
+                            filled: true,
+                            fillColor: Colors.white,
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(30),
+                              borderSide: BorderSide.none,
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(30),
+                              borderSide: BorderSide.none,
+                            ),
+                            prefixIcon: Icon(
+                              Icons.sentiment_satisfied_alt,
+                              size: 30,
+                              color: Colors.black54,
+                            ),
+                            suffixIcon: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                IconButton(
+                                  onPressed: () {},
+                                  icon: Icon(
+                                    Icons.attach_file,
+                                    size: 30,
+                                    color: Colors.black54,
+                                  ),
+                                ),
+                                IconButton(
+                                  onPressed: () {},
+                                  icon: Icon(
+                                    Icons.camera_alt,
+                                    size: 30,
+                                    color: Colors.black54,
+                                  ),
+                                ),
+                                SizedBox(width: 8),
+                              ],
+                            )),
+                      ),
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        print('Hola');
+                      },
+                      child: Container(
+                        margin: EdgeInsets.only(left: 10),
+                        width: 56,
+                        height: 56,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: Theme.of(context).secondaryHeaderColor,
+                        ),
+                        child: Icon(
+                          Icons.send,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
             )
           ],
-        ),
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: Icon(Icons.videocam),
-          ),
-          IconButton(
-            onPressed: () {},
-            icon: Icon(Icons.call),
-          ),
-          IconButton(
-            onPressed: () {},
-            icon: Icon(Icons.more_vert),
-          ),
-        ],
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Container(
-              width: 300,
-              height: 300,
-              color: Colors.blue,
-              child: Stack(
-                clipBehavior: Clip.none,
-                children: [
-                  Positioned(
-                    top: -10,
-                    right: -20,
-                    child: Container(
-                      width: 40,
-                      height: 40,
-                      color: Colors.amber,
-                    ),
-                  ),
-                  Align(
-                    alignment: Alignment.center,
-                    child: Container(
-                      width: 70,
-                      height: 70,
-                      color: Colors.red,
-                    ),
-                  )
-                ],
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
+        )
+        // body: Center(
+        //   child: Column(
+        //     mainAxisAlignment: MainAxisAlignment.center,
+        //     children: [
+        //       Container(
+        //         width: 300,
+        //         height: 300,
+        //         color: Colors.blue,
+        //         child: Stack(
+        //           clipBehavior: Clip.none,
+        //           children: [
+        //             Positioned(
+        //               top: -10,
+        //               right: -20,
+        //               child: Container(
+        //                 width: 40,
+        //                 height: 40,
+        //                 color: Colors.amber,
+        //               ),
+        //             ),
+        //             Align(
+        //               alignment: Alignment.center,
+        //               child: Container(
+        //                 width: 70,
+        //                 height: 70,
+        //                 color: Colors.red,
+        //               ),
+        //             )
+        //           ],
+        //         ),
+        //       ),
+        //     ],
+        //   ),
+        // ),
+        );
   }
 }
